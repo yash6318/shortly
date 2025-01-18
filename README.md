@@ -1,4 +1,4 @@
-# Shortly
+# Shortly - a URL Shortener app
 
 This project is called Shortly, a URL shortener application with a frontend built using React and a backend built using Go. The backend uses PostgreSQL as the database.
 ## Features
@@ -63,14 +63,14 @@ This project is called Shortly, a URL shortener application with a frontend buil
 
 ### Docker Hub Images
 
-If you prefer to use pre-built Docker images from Docker Hub, you can use the following configuration:
+If you prefer to use pre-built Docker images from Docker Hub, you can use the following configuration: (beware of major changes in `env` variables)
 
 ```sh
 version: "3.9"
 
 services:
   app:
-    image: yash6318/shortly-backend:latest
+    image: yash6318/shortly-backend:allorg
     ports:
       - "8080:8080"
     environment:
@@ -91,7 +91,7 @@ services:
       retries: 3
   
   frontend:
-    image: yash6318/shortly-frontend:latest
+    image: yash6318/shortly-frontend:allorg
     ports:
       - "3000:3000"
     environment:
