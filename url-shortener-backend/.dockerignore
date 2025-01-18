@@ -1,0 +1,3 @@
+# Exclude compiled binaries and unnecessary files
+url-shortener
+*.log

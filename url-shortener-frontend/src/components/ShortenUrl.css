@@ -1,0 +1,355 @@
+/* ShortenUrl.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure container takes at least the full viewport height */
+  background-color: #f7f7f7; /* Fallback background color */
+  background-image: url('../assets/social-media.svg'); /* Add your SVG background */
+  background-size: contain; /* Ensure the entire SVG is visible */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the SVG from repeating */
+  font-family: 'Montserrat', sans-serif; /* Modern and clean font */
+  color: #2c3e50; /* Dark blue for text */
+  box-sizing: border-box; /* Prevent padding from causing overflow */
+  position: relative; /* For overlay */
+}
+
+/* Overlay to make the background SVG dull */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+  z-index: 0; /* Place the overlay behind the content */
+}
+
+.main-content {
+  flex: 1; /* Allow main content to grow and take up remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative; /* Ensure content is above the overlay */
+  z-index: 1; /* Place content above the overlay */
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-image {
+  width: 150px;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+  color: #2c3e50; /* Dark blue for headings */
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700; /* Bold */
+}
+
+.subtitle {
+  color: #7f8c8d; /* Light gray for subtitles */
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 400; /* Regular */
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  animation: slideUp 0.5s ease-in-out;
+  margin: 0 auto;
+  box-sizing: border-box; /* Prevent padding from causing overflow */
+}
+
+@media (min-width: 1024px) {
+  .card {
+    max-width: 800px;
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center; /* Center items horizontally on phones */
+}
+
+@media (min-width: 600px) {
+  .input-group {
+    flex-direction: row;
+    align-items: center; /* Align items in a row for larger screens */
+    justify-content: flex-start; /* Align items to the left for larger screens */
+  }
+}
+
+.link-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px; /* Add spacing below the icon on phones */
+}
+
+@media (min-width: 600px) {
+  .link-icon {
+    margin-bottom: 0; /* Remove spacing for larger screens */
+  }
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #5c3bd4; /* Teal border on focus */
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #6a11cb; /* Purple button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+button:hover {
+  background-color: #5c3bd4; /* Teal on hover */
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  color: #e74c3c; /* Red for errors */
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Alert Notification */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffebee; /* Light red background */
+  color: #c62828; /* Dark red text */
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+.close-alert {
+  background: none;
+  border: none;
+  color: #c62828; /* Dark red text */
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.close-alert:hover {
+  color: #b71c1c; /* Darker red on hover */
+  background-color: transparent; /* Ensure no background color is applied */
+  border: none; /* Ensure no border is applied */
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(236, 233, 233, 0.3); /* Slightly transparent white */
+  border-radius: 8px;
+  animation: slideUp 0.5s ease-in-out;
+  text-align: center;
+}
+
+.result p {
+  color: #2c3e50; /* Dark blue for result text */
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.shortened-url-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .shortened-url-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.shortened-url-container a {
+  color: #6a11cb; /* Purple for links */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.shortened-url-container a:hover {
+  color: #5c3bd4; /* Teal on hover */
+  text-decoration: underline;
+}
+
+.copy-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333; /* Dark gray for button text */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.copy-button:hover {
+  background-color: #f1f1f1; /* Light gray on hover */
+}
+
+.copy-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7f8c8d; /* Light gray for footer text */
+  font-weight: 400;
+  padding: 20px 0; /* Increased padding */
+  width: 100%; /* Full width */
+  position: relative; /* Ensure footer is above the overlay */
+  z-index: 1; /* Place footer above the overlay */
+}
+
+.footer p {
+  margin: 5px 0;
+  line-height: 1.5; /* Improve line spacing */
+}
+
+.footer a {
+  color: #6a11cb; /* Purple for links */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #5c3bd4; /* Teal on hover */
+  text-decoration: underline;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
